@@ -1,12 +1,17 @@
-import { useState } from "react";
-import { createRoot } from "react-dom/client";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import Song from "./pages/Song.jsx";
+import "./styles.css";
 
-window.addEventListener("load", () => {
-  let root = createRoot(document.getElementById("root"));
-  root.render(<App />);
-});
+const router = createBrowserRouter([
+  { path: "/", element: <Home /> },
+  { path: "/song/:id", element: <Song /> }
+]);
 
-function App() {
-  // Your app code goes here...
-  return <p>(This JSX code becomes the contents of your component)</p>;
-}
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);

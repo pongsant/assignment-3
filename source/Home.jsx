@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { SONGS } from "../data.js";
+import { SONGS } from "./data.js";   // <-- fixed path
 
 export default function Home() {
   const navigate = useNavigate();
@@ -8,7 +8,6 @@ export default function Home() {
   const [hot, setHot] = useState(false);
   const draggedId = useRef(null);
 
-  // tiny float animation (random offsets) — optional
   useEffect(() => {
     const nodes = document.querySelectorAll(".card");
     nodes.forEach((n) => {
@@ -40,18 +39,12 @@ export default function Home() {
       <div className="portalWrap">
         <div
           className={`portal ${hot ? "hot" : ""}`}
-          onDragOver={(e) => {
-            e.preventDefault();
-            setHot(true);
-          }}
+          onDragOver={(e) => { e.preventDefault(); setHot(true); }}
           onDragLeave={() => setHot(false)}
           onDrop={onDropPortal}
           role="button"
           aria-label="Drop here to enter song page"
-          onClick={() => {
-            // click fallback: open the first item
-            if (items[0]) navigate(`/song/${items[0].id}`);
-          }}
+          onClick={() => { if (items[0]) navigate(`/song/${items[0].id}`); }}
         >
           Drop here to enter
         </div>
@@ -64,7 +57,7 @@ export default function Home() {
             className="card"
             draggable
             onDragStart={(e) => onDragStart(e, s.id)}
-            onDoubleClick={() => navigate(`/song/${s.id}`)} // accessibility fallback
+            onDoubleClick={() => navigate(`/song/${s.id}`)}
             title="Drag into the portal, or double-click"
           >
             <img className="cover" src={s.cover} alt={s.title} />

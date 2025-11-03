@@ -1,9 +1,8 @@
-// source/main.jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createHashRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Song from "./pages/Song.jsx";
+import Home from "./source/Home.jsx";   // <-- fixed
+import Song from "./source/Song.jsx";   // <-- fixed
 import "./styles.css";
 
 const router = createHashRouter([

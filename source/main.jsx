@@ -2,6 +2,9 @@ import { createRoot } from "react-dom/client";
 import React, { useEffect, useMemo, useState } from "react";
 import "./styles.css";
 
+/* IMPORT your Spotify history JSON directly (no fetch!) */
+import historyRows from "./data/Streaming_History_Audio_2024-2025.json";
+
 /* ========= Load all images dropped into source/images ========= */
 const importedImages = import.meta.glob("./images/*.{png,jpg,jpeg,webp}", { eager: true });
 const IMAGE_BY_NAME = {};
@@ -36,7 +39,7 @@ const loadCollections = () => {
 };
 const saveCollections = (c) => localStorage.setItem("collections", JSON.stringify(c));
 
-/* ========= Helpers for Spotify history rows ========= */
+/* ========= Helpers ========= */
 function parseTrackId(uri) {
   if (!uri) return "";
   const p = uri.split(":");
@@ -44,7 +47,7 @@ function parseTrackId(uri) {
 }
 function sanitize(s) { return String(s).toLowerCase().trim(); }
 
-/* ========= MODE B: Only specific favorite artists ========= */
+/* ========= MODE B: only favorite artists ========= */
 const USE_ARTIST_FILTER = true;
 
 const ARTIST_WHITELIST = new Set([
@@ -61,7 +64,7 @@ const ARTIST_WHITELIST = new Set([
   "tokio hotel",
 ]);
 
-/* Artist → photo filename mapping */
+/* Artist → photo filename */
 const ARTIST_IMAGE_FILE = {
   "frank ocean": "frank_ocean.jpg",
   "gavin:d": "gavin_d.jpg",
@@ -76,15 +79,16 @@ const ARTIST_IMAGE_FILE = {
   "tokio hotel": "tokio_hotel.jpg",
 };
 
-/* pick artist image or fallback */
 function coverForArtist(artist) {
   const key = sanitize(artist);
   const filename = ARTIST_IMAGE_FILE[key];
-  if (filename && IMAGE_BY_NAME[filename.toLowerCase()]) return IMAGE_BY_NAME[filename.toLowerCase()];
+  if (filename && IMAGE_BY_NAME[filename.toLowerCase()]) {
+    return IMAGE_BY_NAME[filename.toLowerCase()];
+  }
   return `https://picsum.photos/seed/${encodeURIComponent(key)}/300/300`;
 }
 
-/* aggregate → unique tracks; filter to whitelist; top 15 by ms_played */
+/* aggregate → unique tracks; filter by artists; top 15 by ms_played */
 function toTop15Filtered(rows) {
   const map = new Map();
   for (const r of rows) {
@@ -109,29 +113,16 @@ function App() {
   const { route, navigate } = useHashRoute();
   const [collections, setCollections] = useState(loadCollections);
   const [songs, setSongs] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => saveCollections(collections), [collections]);
 
+  // Use your imported JSON right away
   useEffect(() => {
-    let stop = false;
-    (async () => {
-      try {
-        // Read YOUR JSON file directly from source/data/
-        const res = await fetch("./data/Streaming_History_Audio_2024-2025.json", { headers: { "cache-control": "no-store" } });
-        const raw = await res.json();
-        const rows = Array.isArray(raw)
-          ? raw.filter(r => r.master_metadata_track_name && r.master_metadata_album_artist_name)
-          : [];
-        const top15 = toTop15Filtered(rows);
-        if (!stop) setSongs(top15);
-      } catch {
-        if (!stop) setSongs([]);
-      } finally {
-        if (!stop) setLoading(false);
-      }
-    })();
-    return () => { stop = true; };
+    const rows = Array.isArray(historyRows)
+      ? historyRows.filter(r => r.master_metadata_track_name && r.master_metadata_album_artist_name)
+      : [];
+    const top15 = toTop15Filtered(rows);
+    setSongs(top15);
   }, []);
 
   const openSong = (id) => navigate(`#/song/${encodeURIComponent(String(id))}`);
@@ -147,18 +138,16 @@ function App() {
     return <SongDetail song={song} onBack={() => navigate("#/")} collections={collections} setCollections={setCollections} />;
   }
 
-  return <Entrance songs={songs} loading={loading} openSong={openSong} />;
+  return <Entrance songs={songs} openSong={openSong} />;
 }
 
-/* ========= Entrance (floating covers + portal) ========= */
-function Entrance({ songs, loading, openSong }) {
+/* ========= Entrance ========= */
+function Entrance({ songs, openSong }) {
   return (
     <div className="wrap">
       <header className="brand">
         <h1>Interactive Archive — Favorite Artists</h1>
-        <p className="sub">
-          {loading ? "Reading your streaming history…" : "Click a cover (or drag to the portal)"}
-        </p>
+        <p className="sub">Click a cover (or drag to the portal)</p>
       </header>
 
       <div className="portal"><div className="portal-hole" /></div>
@@ -176,7 +165,8 @@ function Entrance({ songs, loading, openSong }) {
   );
 }
 
-/* ========= Detail (with simple buckets via click) ========= */
+/* ========= Detail ========= */
+const BUCKETS_LIST = ["Lyrics", "Production", "Vibe"];
 function SongDetail({ song, onBack, collections, setCollections }) {
   const isIn = (b) => collections[b]?.includes(String(song.id));
   const add = (b) => setCollections((c) => isIn(b) ? c : { ...c, [b]: [...c[b], String(song.id)] });
@@ -195,7 +185,7 @@ function SongDetail({ song, onBack, collections, setCollections }) {
       </header>
 
       <section className="buckets" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginTop: 24 }}>
-        {BUCKETS.map((b) => (
+        {BUCKETS_LIST.map((b) => (
           <div key={b} className={`bucket ${isIn(b) ? "active" : ""}`} style={{ border: "1px solid #333", borderRadius: 14, padding: 12 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <strong>{b}</strong>

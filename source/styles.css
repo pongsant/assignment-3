@@ -1,132 +1,52 @@
-/* ========= GLOBAL RESET ========= */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* ORBIT LAYOUT */
+.orbit {
+  position: relative;
+  width: 0; height: 0;
+  margin: 0 auto;
+  transform: translateY(20px);
+  animation: orbitSpin 40s linear infinite;
+}
+.orbit:hover { animation-play-state: paused; }
 
-/* Use Manrope (closest free match to Spotify’s Circular) */
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
-
-:root{
-  --bg0:#050506; --bg1:#0e0f10;
-  --text:#e6e6e6; --muted:#9b9b9b;
-  --panel:#121212; --panel-2:#151515;
-  --line:#262626; --green:#1DB954;
+/* center of the page is the portal; we position children around it */
+.orbit-item {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform-origin: 0 0;
 }
 
-html, body { height: 100%; }
-body{
-  background: radial-gradient(circle at center, var(--bg1) 0%, var(--bg0) 100%);
-  color: var(--text);
-  font-family: "Circular","Circular Std","Manrope",Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  overflow: hidden;
+/* gentle card tilt while orbiting */
+.orbit .album img { transform: rotate(-6deg) scale(1); }
+.orbit .album:hover img { transform: rotate(-3deg) scale(1.08); }
+
+/* ring rotation */
+@keyframes orbitSpin {
+  from { transform: translateY(20px) rotate(0deg); }
+  to   { transform: translateY(20px) rotate(360deg); }
+
+  /* ORBIT LAYOUT */
+.orbit {
+  position: relative;
+  width: 0; height: 0;
+  margin: 0 auto;
+  transform: translateY(20px);
+  animation: orbitSpin 40s linear infinite;
+}
+.orbit:hover { animation-play-state: paused; }
+
+.orbit-item {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform-origin: 0 0;
 }
 
-.wrap{ width:100%; max-width:1200px; margin:0 auto; }
+/* slight tilt while orbiting */
+.orbit .album img { transform: rotate(-6deg) scale(1); }
+.orbit .album:hover img { transform: rotate(-3deg) scale(1.08); }
 
-/* ========= HEADER ========= */
-.brand{ text-align:center; padding-top:50px; margin-bottom:30px; }
-.brand h1{ font-weight:700; letter-spacing:-0.3px; font-size:1.9rem; }
-.brand .sub{ opacity:.65; margin-top:6px; font-size:.98rem; }
-
-/* ========= PORTAL ========= */
-.portal{
-  width:260px; height:260px; margin:0 auto 30px;
-  border-radius:50%;
-  border:2px dashed rgba(255,255,255,.22);
-  display:flex; align-items:center; justify-content:center;
-  position:relative; transition:border-color .3s ease;
-  box-shadow: 0 0 0 1px rgba(255,255,255,.05) inset, 0 0 60px rgba(29,185,84,.08);
-}
-.portal.hover, .portal:hover{ border-color:var(--green); }
-
-.portal-hole{
-  width:170px; height:170px; border-radius:50%;
-  background: rgba(255,255,255,.06);
-  backdrop-filter: blur(14px);
-  animation: portalPulse 3.4s ease-in-out infinite;
-  box-shadow: 0 0 55px rgba(29,185,84,.25), 0 0 140px rgba(29,185,84,.10);
-}
-@keyframes portalPulse{
-  0%{ transform:scale(1); opacity:.9; }
-  50%{ transform:scale(1.09); opacity:.65; }
-  100%{ transform:scale(1); opacity:.9; }
+@keyframes orbitSpin {
+  from { transform: translateY(20px) rotate(0deg); }
+  to   { transform: translateY(20px) rotate(360deg); }
 }
 
-/* ========= FLOATING COVERS ========= */
-.float-field{ list-style:none; }
-.float-card{
-  position:absolute;
-  transform:translate(-50%,-50%);
-  animation: floatDrift 16s ease-in-out infinite;
 }
-@keyframes floatDrift{
-  0%{   transform:translate(-50%,-50%) translate(-6px,-5px) scale(1); }
-  50%{  transform:translate(-50%,-50%) translate(12px, 9px)  scale(1.025); }
-  100%{ transform:translate(-50%,-50%) translate(-6px,-5px) scale(1); }
-}
-
-/* ========= IMAGE BUTTONS (no white tiles) ========= */
-.album{
-  background:transparent !important; border:none !important; padding:0 !important;
-  border-radius:22px; cursor:pointer; position:relative;
-}
-.album::-moz-focus-inner{ border:0; padding:0; }
-.album:focus{ outline:none; box-shadow:0 0 0 2px #1db95455; }
-.float-card{ background:transparent !important; box-shadow:none !important; }
-
-.album img{
-  display:block; width:110px; height:110px; object-fit:cover; border-radius:20px;
-  background:transparent !important; border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 10px 26px rgba(0,0,0,.45);
-  mix-blend-mode:multiply; /* helps remove white edges on dark bg */
-  transition: transform .28s cubic-bezier(.22,.61,.36,1),
-              box-shadow .28s ease, filter .28s ease;
-}
-.album:hover img{
-  transform:scale(1.065);
-  box-shadow:0 14px 34px rgba(0,0,0,.55);
-  filter:brightness(1.08) contrast(1.05);
-}
-
-/* Optional: feather mask to hide harsh corners on some images */
-/*
-.album img{
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 62%, rgba(0,0,0,0) 75%);
-          mask-image: radial-gradient(circle at 50% 50%, #000 62%, rgba(0,0,0,0) 75%);
-}
-*/
-
-/* ========= DETAIL PAGE ========= */
-.detail{ padding:40px; color:var(--text); }
-.back{ background:none; border:none; color:var(--green); font-size:1rem; cursor:pointer; margin-bottom:20px; }
-
-.song-head img{
-  border-radius:20px; width:160px; height:160px; object-fit:cover;
-  box-shadow:0 10px 26px rgba(0,0,0,.45);
-}
-
-.play{
-  display:inline-block; margin-top:8px; padding:8px 12px;
-  background:var(--green); color:#0b0b0b; font-weight:600; border-radius:8px;
-  text-decoration:none; transition: transform .12s ease, filter .12s ease;
-}
-.play:hover{ transform:translateY(-1px); filter:brightness(1.03); }
-
-/* ========= Spotify-like LYRICS AREA ========= */
-textarea{
-  width:100%; min-height:320px; border-radius:12px;
-  background:var(--panel); color:#e5e5e5;
-  border:1px solid var(--line); padding:14px 16px;
-  font:14px/1.6 "Manrope",Inter,system-ui,sans-serif;
-  caret-color:var(--green);
-  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
-}
-textarea::placeholder{ color:var(--muted); }
-textarea:focus{
-  outline:none; border-color:var(--green);
-  box-shadow:0 0 0 2px rgba(29,185,84,.25);
-  background:var(--panel-2);
-}
-/* custom scrollbar (desktop) */
-textarea::-webkit-scrollbar{ width:10px; }
-textarea::-webkit-scrollbar-track{ background:#0f0f0f; }
-textarea::-webkit-scrollbar-thumb{ background:#2a2a2a; border-radius:10px; }
-textarea:hover::-webkit-scrollbar-thumb{ background:#343434; }

@@ -16,7 +16,11 @@ for (const p in importedImages) {
 /* --- tiny hash router --- */
 function useRoute() {
   const [hash, setHash] = useState(() => window.location.hash || "#/");
-  useEffect(() => { const on = () => setHash(window.location.hash || "#/"); window.addEventListener("hashchange", on); return () => window.removeEventListener("hashchange", on); }, []);
+  useEffect(() => {
+    const on = () => setHash(window.location.hash || "#/");
+    window.addEventListener("hashchange", on);
+    return () => window.removeEventListener("hashchange", on);
+  }, []);
   const parts = (hash.replace(/^#/, "") || "/").split("/").filter(Boolean);
   if (parts.length === 0) return { page: "home" };
   if (parts[0] === "song" && parts[1]) return { page: "song", id: parts[1] };
@@ -104,27 +108,10 @@ function App() {
   return <Entrance items={items} />;
 }
 
-/* --------- Page 1: floating covers + drag into portal --------- */
+/* --------- Page 1: ORBIT RING + drag into portal --------- */
 function Entrance({ items }) {
   const portalRef = useRef(null);
   const [hover, setHover] = useState(false);
-
-  // random-ish layout positions so cards "float" around center
-  const positions = useMemo(() => {
-    const arr = [];
-    const radius = 250; // distance from center
-    for (let i = 0; i < items.length; i++) {
-      const angle = (i / items.length) * Math.PI * 2;
-      const jitterR = radius + (Math.random() * 60 - 30);
-      const jitterA = angle + (Math.random() * 0.35 - 0.175);
-      arr.push({
-        left: 50 + (Math.cos(jitterA) * jitterR) / window.innerWidth * 100,
-        top:  50 + (Math.sin(jitterA) * jitterR) / window.innerHeight * 100,
-        delay: Math.random() * 3,
-      });
-    }
-    return arr;
-  }, [items.length]);
 
   useEffect(() => {
     const dz = portalRef.current;
@@ -146,28 +133,38 @@ function Entrance({ items }) {
     };
   }, []);
 
+  // fixed ring layout (no random jitter) so it feels fresh vs old project
+  const angleStep = (Math.PI * 2) / Math.max(items.length, 1);
+  const radiusPx = 280; // distance from center
+
   return (
     <div className="wrap entrance">
       <header className="brand">
-        <h1>15 Artists</h1>
-        <p className="sub">Drag any artist into the circle or click to open</p>
+        <h1>Orbit — 15 Artists</h1>
+        <p className="sub">Drag a cover into the portal • or click to open</p>
       </header>
 
       <div ref={portalRef} className={`portal ${hover ? "hover" : ""}`}>
         <div className="portal-hole" />
       </div>
 
-      <ul className="float-field" aria-label="Floating artist covers">
-        {items.map((s, i) => (
-          <li
-            key={s.id}
-            className="float-card"
-            style={{ left: `${positions[i]?.left || 50}%`, top: `${positions[i]?.top || 50}%`, animationDelay: `${positions[i]?.delay || 0}s` }}
-          >
-            <ArtistButton item={s} />
-          </li>
-        ))}
-      </ul>
+      {/* Orbiting ring (CSS rotates the whole group) */}
+      <div className="orbit" aria-label="Orbiting artist covers">
+        {items.map((s, i) => {
+          const a = i * angleStep;
+          const x = Math.cos(a) * radiusPx;
+          const y = Math.sin(a) * radiusPx;
+          return (
+            <div
+              key={s.id}
+              className="orbit-item"
+              style={{ transform: `translate(${x}px, ${y}px) rotate(${a}rad)` }}
+            >
+              <ArtistButton item={s} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -225,7 +222,16 @@ function SongDetail({ song, onBack, lyrics }) {
           onChange={(e) => setText(e.target.value)}
           onBlur={save}
           placeholder="Paste or type your lyrics here…"
-          style={{ width: "100%", minHeight: 260, borderRadius: 12, padding: 12, font: "14px/1.5 system-ui, sans-serif", background: "#101010", color: "#eee", border: "1px solid #333" }}
+          style={{
+            width: "100%",
+            minHeight: 260,
+            borderRadius: 12,
+            padding: 12,
+            font: "14px/1.5 system-ui, sans-serif",
+            background: "#101010",
+            color: "#eee",
+            border: "1px solid #333"
+          }}
         />
         <div style={{ marginTop: 8, opacity: 0.7, fontSize: 13 }}></div>
       </section>

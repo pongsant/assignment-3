@@ -111,7 +111,7 @@ function App() {
 }
 
 /* ===================================== */
-/*   PAGE 1: EDITORIAL COLLAGE + PORTAL  */
+/*   PAGE 1: EDITORIAL COLLAGE (uniform) */
 /* ===================================== */
 function Entrance({ items }) {
   const portalRef = useRef(null);
@@ -137,13 +137,9 @@ function Entrance({ items }) {
     };
   }, []);
 
-  // per-tile jitter (rotation / vertical offset / z-depth) for collage feel
-  const styleMeta = useMemo(() => {
-    return items.map(() => ({
-      r: (Math.random() * 8 - 4).toFixed(2) + "deg",
-      y: Math.floor(Math.random() * 60 - 30) + "px",
-      z: Math.floor(Math.random() * 6) + 1
-    }));
+  // uniform stagger only (no random rotates/z-index/offsets)
+  const meta = useMemo(() => {
+    return items.map((_, i) => ({ d: (i * 0.05).toFixed(2) + "s" }));
   }, [items.length]);
 
   return (
@@ -159,11 +155,7 @@ function Entrance({ items }) {
 
       <ul className="collage" aria-label="Artist collage">
         {items.map((s, i) => (
-          <li
-            key={s.id}
-            className="tile"
-            style={{ "--r": styleMeta[i]?.r, "--y": styleMeta[i]?.y, "--z": styleMeta[i]?.z }}
-          >
+          <li key={s.id} className="tile uniform" style={{ "--delay": meta[i]?.d || "0s" }}>
             <ArtistCard item={s} index={i + 1} />
           </li>
         ))}
@@ -179,7 +171,7 @@ function ArtistCard({ item, index }) {
     e.dataTransfer.effectAllowed = "move";
   };
   return (
-    <figure className="card" style={{ zIndex: "var(--z)" }}>
+    <figure className="card">
       <button
         className="album"
         draggable

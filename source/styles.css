@@ -1,52 +1,153 @@
-/* ORBIT LAYOUT */
-.orbit {
-  position: relative;
-  width: 0; height: 0;
+/* ======= EDITORIAL THEME (white) ======= */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap");
+
+:root{
+  --ink:#0c0d0e;
+  --muted:#6f7276;
+  --paper:#ffffff;
+  --line:#e8e8ea;
+  --green:#1DB954;
+}
+
+body{
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Manrope", Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.brand{ text-align:center; padding-top: 56px; margin-bottom: 28px; }
+.brand h1{ font-weight:700; letter-spacing:-.3px; font-size:1.9rem; }
+.brand .sub{ color: var(--muted); margin-top:6px; }
+
+/* ======= LIGHT PORTAL (minimal) ======= */
+.portal.portal--light{
+  width:240px; height:240px; margin: 4px auto 22px;
+  border-radius:50%;
+  border:2px dashed rgba(12,13,14,.18);
+  display:flex; align-items:center; justify-content:center;
+  transition: border-color .25s ease, box-shadow .25s ease;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.02) inset;
+}
+.portal.portal--light.hover{ border-color: var(--green); }
+.portal.portal--light .portal-hole{
+  width:150px; height:150px; border-radius:50%;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,.04), transparent 70%);
+  animation: portalLightPulse 3.6s ease-in-out infinite;
+}
+@keyframes portalLightPulse{
+  0%   { transform: scale(1);    opacity:.9; }
+  50%  { transform: scale(1.06); opacity:.7; }
+  100% { transform: scale(1);    opacity:.9; }
+}
+
+/* ======= COLLAGE LAYOUT ======= */
+.collage{
+  width: min(1120px, 92vw);
+  margin: 22px auto 80px;
+  padding: 0;
+  columns: 5 220px;       /* auto-fit columns; min tile width ~220px */
+  column-gap: 28px;
+  list-style: none;
+}
+.tile{
+  break-inside: avoid;
+  margin: 0 0 28px;
+  transform: translateY(var(--y)) rotate(var(--r));
+  will-change: transform;
+}
+.card{ position: relative; }
+
+/* image tiles */
+.album{
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  cursor: pointer;
+  border-radius: 18px;
+  display: block;
+}
+.album img{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/5;              /* portrait bias like editorial spreads */
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.08),
+    0 0 0 1px rgba(0,0,0,.06) inset;
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+.album:hover img{
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 36px rgba(0,0,0,.12),
+    0 0 0 1px rgba(0,0,0,.08) inset;
+  filter: saturate(1.03) contrast(1.03);
+}
+
+/* caption numbers + names */
+.caption{
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 6px;
+  color: var(--ink);
+  letter-spacing: .2px;
+}
+.caption .num{
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--muted);
+}
+.caption .name{
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 1.06rem;
+  letter-spacing: .3px;
+  text-transform: uppercase;
+}
+
+/* ======= DETAIL PAGE (magazine panel) ======= */
+.detail{
+  padding: 48px 24px;
+  max-width: 980px;
   margin: 0 auto;
-  transform: translateY(20px);
-  animation: orbitSpin 40s linear infinite;
 }
-.orbit:hover { animation-play-state: paused; }
-
-/* center of the page is the portal; we position children around it */
-.orbit-item {
-  position: absolute;
-  left: 50%; top: 50%;
-  transform-origin: 0 0;
+.back{
+  background: none; border: none; color: var(--green);
+  font-weight: 600; cursor: pointer; margin-bottom: 14px;
 }
-
-/* gentle card tilt while orbiting */
-.orbit .album img { transform: rotate(-6deg) scale(1); }
-.orbit .album:hover img { transform: rotate(-3deg) scale(1.08); }
-
-/* ring rotation */
-@keyframes orbitSpin {
-  from { transform: translateY(20px) rotate(0deg); }
-  to   { transform: translateY(20px) rotate(360deg); }
-
-  /* ORBIT LAYOUT */
-.orbit {
-  position: relative;
-  width: 0; height: 0;
-  margin: 0 auto;
-  transform: translateY(20px);
-  animation: orbitSpin 40s linear infinite;
+.song-head{
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 18px;
 }
-.orbit:hover { animation-play-state: paused; }
-
-.orbit-item {
-  position: absolute;
-  left: 50%; top: 50%;
-  transform-origin: 0 0;
+.song-head img{
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.10);
+}
+.play{
+  display: inline-block; margin-top: 10px;
+  background: var(--green); color: #0b0b0b; text-decoration: none;
+  padding: 8px 12px; border-radius: 8px; font-weight: 600;
 }
 
-/* slight tilt while orbiting */
-.orbit .album img { transform: rotate(-6deg) scale(1); }
-.orbit .album:hover img { transform: rotate(-3deg) scale(1.08); }
-
-@keyframes orbitSpin {
-  from { transform: translateY(20px) rotate(0deg); }
-  to   { transform: translateY(20px) rotate(360deg); }
+/* Spotify-like lyrics box */
+textarea{
+  width:100%;
+  min-height:320px;
+  background:#fafafa;
+  border:1px solid var(--line);
+  border-radius: 12px;
+  padding:14px 16px;
+  font: 15px/1.7 Manrope, system-ui, sans-serif;
+  color:#111;
+  transition: box-shadow .2s ease, border-color .2s ease;
 }
-
+textarea:focus{
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(29,185,84,.18);
 }

@@ -149,8 +149,8 @@ function Entrance({ items }) {
   return (
     <div className="wrap entrance">
       <header className="brand">
-        <h1>15 Artists — Drag into the Portal</h1>
-        <p className="sub">Drag any artist into the circle • or click to open</p>
+        <h1>15 Artists</h1>
+        <p className="sub">Drag any artist into the circle or click to open</p>
       </header>
 
       <div ref={portalRef} className={`portal ${hover ? "hover" : ""}`}>
@@ -219,7 +219,7 @@ function SongDetail({ song, onBack, lyrics }) {
       </header>
 
       <section style={{ marginTop: 24 }}>
-        <h3>Lyrics (type or paste — auto-saves)</h3>
+        <h3>Lyrics</h3>
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -227,7 +227,7 @@ function SongDetail({ song, onBack, lyrics }) {
           placeholder="Paste or type your lyrics here…"
           style={{ width: "100%", minHeight: 260, borderRadius: 12, padding: 12, font: "14px/1.5 system-ui, sans-serif", background: "#101010", color: "#eee", border: "1px solid #333" }}
         />
-        <div style={{ marginTop: 8, opacity: 0.7, fontSize: 13 }}>Saved locally when you click away.</div>
+        <div style={{ marginTop: 8, opacity: 0.7, fontSize: 13 }}></div>
       </section>
     </div>
   );

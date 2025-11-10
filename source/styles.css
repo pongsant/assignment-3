@@ -1,9 +1,9 @@
-/* Reset */
+/* Reset & palette */
 *{margin:0;padding:0;box-sizing:border-box}
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap");
 
 :root{
-  --bg:#0e0f12;        /* Spotify-ish dark */
+  --bg:#0e0f12;
   --panel:#121316;
   --panel2:#16181d;
   --ink:#e8e8ea;
@@ -21,7 +21,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== Ambient animated background ===== */
+/* ===== Ambient background ===== */
 .orbit-wrap{position:relative; min-height:100dvh; padding:40px 16px 80px; overflow:hidden;}
 .ambience{position:absolute; inset:-20% -10% -10% -10%; z-index:0; filter: blur(40px) saturate(1.2);}
 .blob{
@@ -46,27 +46,33 @@ body{
 @keyframes grainShift{ 0%{transform:translate(0,0)} 100%{transform:translate(-10px,8px)} }
 
 /* ===== Header ===== */
-.hero-head{position:relative; z-index:1; text-align:center; margin-bottom:10px;}
+.hero-head{position:relative; z-index:2; text-align:center; margin-bottom:10px;}
 .hero-head h1{font-size:clamp(28px,4vw,42px); font-weight:800; letter-spacing:-.02em;}
 .hero-head p{color:var(--muted); margin-top:6px}
 
-/* ===== Stage ===== */
+/* ===== Perfectly centered stage ===== */
 .stage{
-  position:relative; z-index:1;
-  width:min(92vw, 780px); height:min(92vw, 780px);
-  margin:20px auto 0; 
+  position: relative;
+  z-index: 2;
+  width: min(92vw, 780px);
+  aspect-ratio: 1 / 1;            /* square */
+  margin: 24px auto 0;
+  display: grid;
+  place-items: center;            /* centers children */
 }
 
-/* Portal (drop zone) */
+/* Portal is ABOVE the orbit (so it receives drops) */
 .portal{
-  position:absolute; inset:50% auto auto 50%;
-  width:240px; height:240px; transform:translate(-50%,-50%);
-  border-radius:50%; border:2px dashed rgba(255,255,255,.15);
-  display:flex; align-items:center; justify-content:center;
+  position: absolute;
+  z-index: 4;                     /* <<< TOP LAYER */
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255,255,255,.15);
+  display: flex; align-items: center; justify-content: center;
   transition:border-color .25s ease, box-shadow .25s ease;
 }
 .portal .halo{
-  width:160px; height:160px; border-radius:50%;
+  width: 160px; height: 160px; border-radius: 50%;
   background: radial-gradient(ellipse at center, rgba(29,185,84,.15), rgba(29,185,84,0) 70%);
   box-shadow: 0 0 0 1px rgba(255,255,255,.03) inset;
   animation: haloPulse 3.5s ease-in-out infinite;
@@ -78,23 +84,25 @@ body{
   100%{ transform:scale(1); opacity:.9 }
 }
 
-/* Orbit ring container rotates */
+/* Orbit ring centered; spins under portal */
 .orbit{
-  list-style:none; position:absolute; inset:0;
+  list-style:none;
+  position:absolute; inset:0;
+  z-index: 2;                     /* below portal */
   animation: spin 40s linear infinite;
 }
 @keyframes spin{ from{ transform: rotate(0deg) } to{ transform: rotate(360deg) } }
 
-/* Each item sits on the circle at angle var(--angle) */
+/* Each item sits on circle at angle var(--angle) */
 .orbit-item{
-  --R: 300px;                           /* radius */
+  --R: 300px;                      /* ring radius */
   position:absolute; left:50%; top:50%;
   transform: rotate(calc(var(--angle) * 1rad)) translateX(var(--R)) rotate(calc(var(--angle) * -1rad));
 }
 
 /* Cover buttons */
 .cover{
-  position:relative;
+  position:relative; z-index:3;    /* above ring, below portal outline */
   width:120px; height:120px;
   border-radius:18px; overflow:hidden; padding:0; border:1px solid var(--ring);
   background:var(--panel); cursor:pointer;

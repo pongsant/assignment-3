@@ -38,11 +38,10 @@ function coverForArtist(artist) {
   for (const name of candidates) {
     if (IMAGE_BY_NAME[name]) return IMAGE_BY_NAME[name];
   }
-  // fallback image
   return `https://picsum.photos/seed/${encodeURIComponent(artist || "cover")}/400/400`;
 }
 
-/* Build list strictly from YOUR lyrics keys (order preserved) */
+/* Build list strictly from YOUR lyrics keys (keeps your chosen songs) */
 function buildItemsFromHistory(history) {
   const order = Object.keys(LYRICS); // your 15 track IDs
   const byId = new Map();
@@ -64,7 +63,6 @@ function buildItemsFromHistory(history) {
     if (row) {
       items.push({ ...row });
     } else {
-      // still include even if history row missing (you can fill lyrics/image)
       items.push({
         id,
         title: "(title from history not found)",
@@ -84,9 +82,7 @@ function App() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const rows = Array.isArray(STREAMING_HISTORY)
-      ? STREAMING_HISTORY
-      : [];
+    const rows = Array.isArray(STREAMING_HISTORY) ? STREAMING_HISTORY : [];
     setItems(buildItemsFromHistory(rows));
   }, []);
 
@@ -104,28 +100,53 @@ function OrbitHome({ items }) {
   const portalRef = useRef(null);
   const [hover, setHover] = useState(false);
 
-  // drop zone handlers
+  // ensure portal receives drops (on both ring and inner halo)
   useEffect(() => {
     const dz = portalRef.current;
-    const onDragOver = (e) => { e.preventDefault(); setHover(true); };
-    const onDragLeave = () => setHover(false);
-    const onDrop = (e) => {
+    if (!dz) return;
+
+    const setOn = (el) => {
+      if (!el) return;
+      el.addEventListener("dragenter", onEnter);
+      el.addEventListener("dragover", onOver);
+      el.addEventListener("dragleave", onLeave);
+      el.addEventListener("drop", onDrop);
+    };
+    const setOff = (el) => {
+      if (!el) return;
+      el.removeEventListener("dragenter", onEnter);
+      el.removeEventListener("dragover", onOver);
+      el.removeEventListener("dragleave", onLeave);
+      el.removeEventListener("drop", onDrop);
+    };
+
+    function onEnter(e){ e.preventDefault(); setHover(true); }
+    function onOver(e){ e.preventDefault(); setHover(true); }
+    function onLeave(){ setHover(false); }
+    function onDrop(e){
       e.preventDefault();
       const id = e.dataTransfer.getData("text/songId");
       setHover(false);
       if (id) location.hash = `#/song/${encodeURIComponent(id)}`;
-    };
-    dz.addEventListener("dragover", onDragOver);
-    dz.addEventListener("dragleave", onDragLeave);
-    dz.addEventListener("drop", onDrop);
+    }
+
+    setOn(dz);
+    setOn(dz.querySelector(".halo"));
+
+    // global: allow drop anywhere so browser doesn't block it
+    const prevent = (e) => e.preventDefault();
+    window.addEventListener("dragover", prevent);
+    window.addEventListener("drop", prevent);
+
     return () => {
-      dz.removeEventListener("dragover", onDragOver);
-      dz.removeEventListener("dragleave", onDragLeave);
-      dz.removeEventListener("drop", onDrop);
+      setOff(dz);
+      setOff(dz.querySelector(".halo"));
+      window.removeEventListener("dragover", prevent);
+      window.removeEventListener("drop", prevent);
     };
   }, []);
 
-  // angles around the circle (even spacing)
+  // evenly spaced angles around the circle
   const angles = useMemo(() => {
     const a = [];
     const n = Math.max(items.length, 1);
@@ -158,9 +179,7 @@ function OrbitHome({ items }) {
             <li
               key={s.id}
               className="orbit-item"
-              style={{
-                "--angle": angles[i],
-              }}
+              style={{ "--angle": angles[i] }}
             >
               <CoverButton item={s} />
             </li>
@@ -175,6 +194,10 @@ function CoverButton({ item }) {
   const onDragStart = (e) => {
     e.dataTransfer.setData("text/songId", item.id);
     e.dataTransfer.effectAllowed = "move";
+    // nicer drag image (use the cover itself)
+    const img = new Image();
+    img.src = item.cover;
+    img.onload = () => e.dataTransfer.setDragImage(img, 60, 60);
   };
   return (
     <button

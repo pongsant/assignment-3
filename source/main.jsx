@@ -1,12 +1,12 @@
 import { createRoot } from "react-dom/client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./styles.css";
 
-/* ---- data (no fetch) ---- */
+/* ---- your data (no fetch) ---- */
 import STREAMING_HISTORY from "./data/data.js";
-import PRESET_LYRICS from "./data/lyrics.js";
+import LYRICS from "./data/lyrics.js";
 
-/* ---- import artist images dropped in /source/images ---- */
+/* ---- import images dropped in /source/images ---- */
 const importedImages = import.meta.glob("./images/*.{png,jpg,jpeg,webp}", { eager: true });
 const IMAGE_BY_NAME = {};
 for (const p in importedImages) {
@@ -16,7 +16,7 @@ for (const p in importedImages) {
 /* ---- tiny hash router ---- */
 function useRoute() {
   const [hash, setHash] = useState(() => window.location.hash || "#/");
-  useEffect(() => {
+  React.useEffect(() => {
     const on = () => setHash(window.location.hash || "#/");
     window.addEventListener("hashchange", on);
     return () => window.removeEventListener("hashchange", on);
@@ -32,7 +32,6 @@ const sanitize = (s) => String(s || "").toLowerCase().trim();
 const toTrackId = (uri) => (uri ? (uri.split(":")[2] || "") : "");
 const trackUrl  = (id)  => (id ? `https://open.spotify.com/track/${id}` : "#");
 
-/* choose an image by artist filename or fallback */
 function coverForArtist(artist) {
   const base = sanitize(artist).replace(/[^a-z0-9]+/g, "_");
   const candidates = [`${base}.jpg`, `${base}.png`, `${base}.jpeg`, `${base}.webp`];
@@ -42,7 +41,6 @@ function coverForArtist(artist) {
   return `https://picsum.photos/seed/${encodeURIComponent(artist)}/600/800`;
 }
 
-/* build: 15 artists → pick their top song from your history */
 function pick15Artists(rows) {
   const byArtist = new Map();
   for (const r of rows) {
@@ -65,34 +63,18 @@ function pick15Artists(rows) {
       id: best.id,
       artist: A.artist,
       title: best.title,
-      total: A.total,
       spotifyUrl: trackUrl(best.id),
     });
   }
-  top.sort((a, b) => b.total - a.total);
+  top.sort((a, b) => b.artist.localeCompare(a.artist)); // diary order A→Z (feel free to change)
   return top.slice(0, 15);
 }
 
-/* ---- lyrics (preset + localStorage) ---- */
-const LYRICS_KEY = "lyrics_map_v1";
-function useLyrics() {
-  const [map, setMap] = useState(() => {
-    try {
-      const raw = localStorage.getItem(LYRICS_KEY);
-      if (raw) return { ...PRESET_LYRICS, ...JSON.parse(raw) };
-    } catch {}
-    return { ...PRESET_LYRICS };
-  });
-  useEffect(() => { try { localStorage.setItem(LYRICS_KEY, JSON.stringify(map)); } catch {} }, [map]);
-  return { get: (id) => map[id] || "", set: (id, text) => setMap((m) => ({ ...m, [id]: text })) };
-}
-
-/* ===================================== */
-/*                  APP                  */
-/* ===================================== */
+/* ============================= */
+/*              APP              */
+/* ============================= */
 function App() {
   const route = useRoute();
-  const lyrics = useLyrics();
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -105,58 +87,45 @@ function App() {
 
   if (route.page === "song") {
     const song = items.find(s => s.id === route.id) || null;
-    return <SongDetail song={song} onBack={() => (location.hash = "#/")} lyrics={lyrics} />;
+    return <SongDetail song={song} onBack={() => (location.hash = "#/")} />;
   }
-  return <Entrance items={items} />;
+  return <DiaryHome items={items} />;
 }
 
-/* ===================================== */
-/*   PAGE 1: EDITORIAL COLLAGE (uniform) */
-/* ===================================== */
-function Entrance({ items }) {
-  const portalRef = useRef(null);
-  const [hover, setHover] = useState(false);
-
-  useEffect(() => {
-    const dz = portalRef.current;
-    const onDragOver = (e) => { e.preventDefault(); setHover(true); };
-    const onDragLeave = () => setHover(false);
-    const onDrop = (e) => {
-      e.preventDefault();
-      const id = e.dataTransfer.getData("text/songId");
-      setHover(false);
-      if (id) location.hash = `#/song/${encodeURIComponent(id)}`;
-    };
-    dz.addEventListener("dragover", onDragOver);
-    dz.addEventListener("dragleave", onDragLeave);
-    dz.addEventListener("drop", onDrop);
-    return () => {
-      dz.removeEventListener("dragover", onDragOver);
-      dz.removeEventListener("dragleave", onDragLeave);
-      dz.removeEventListener("drop", onDrop);
-    };
-  }, []);
-
-  // uniform stagger only (no random rotates/z-index/offsets)
-  const meta = useMemo(() => {
-    return items.map((_, i) => ({ d: (i * 0.05).toFixed(2) + "s" }));
-  }, [items.length]);
+/* ============================= */
+/*    PAGE 1: DIARY / MAGAZINE   */
+/* ============================= */
+function DiaryHome({ items }) {
+  // uniform stagger (clean, no overlap bugs)
+  const delays = useMemo(
+    () => items.map((_, i) => `${(i * 0.05).toFixed(2)}s`),
+    [items.length]
+  );
 
   return (
-    <div className="wrap entrance">
-      <header className="brand">
-        <h1>Fifteen Artists</h1>
-        <p className="sub">Drag a cover into the circle • or click to open</p>
+    <div className="wrap home">
+      <header className="masthead">
+        <h1>Song Diary</h1>
+        <p className="dek">15 artists from my listening — click a page to read the entry & lyrics.</p>
       </header>
 
-      <div ref={portalRef} className={`portal portal--light ${hover ? "hover" : ""}`}>
-        <div className="portal-hole" />
-      </div>
-
-      <ul className="collage" aria-label="Artist collage">
+      {/* Editorial grid */}
+      <ul className="diary-grid" aria-label="Song diary entries">
         {items.map((s, i) => (
-          <li key={s.id} className="tile uniform" style={{ "--delay": meta[i]?.d || "0s" }}>
-            <ArtistCard item={s} index={i + 1} />
+          <li key={s.id} className="entry" style={{ "--delay": delays[i] }}>
+            <button
+              className="entry-card"
+              onClick={() => (location.hash = `#/song/${encodeURIComponent(s.id)}`)}
+              aria-label={`${s.artist} — ${s.title}`}
+              title={`${s.artist} — ${s.title}`}
+            >
+              <img src={s.cover} alt={s.artist} />
+              <div className="entry-meta">
+                <span className="kicker">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="entry-artist">{s.artist}</h3>
+                <p className="entry-title">{s.title}</p>
+              </div>
+            </button>
           </li>
         ))}
       </ul>
@@ -164,74 +133,41 @@ function Entrance({ items }) {
   );
 }
 
-/* one tile */
-function ArtistCard({ item, index }) {
-  const onDragStart = (e) => {
-    e.dataTransfer.setData("text/songId", item.id);
-    e.dataTransfer.effectAllowed = "move";
-  };
-  return (
-    <figure className="card">
-      <button
-        className="album"
-        draggable
-        onDragStart={onDragStart}
-        onClick={() => (location.hash = `#/song/${encodeURIComponent(item.id)}`)}
-        aria-label={`${item.artist} — ${item.title}`}
-        title={`${item.artist} — ${item.title}`}
-      >
-        <img src={item.cover} alt={item.artist} />
-      </button>
-      <figcaption className="caption">
-        <span className="num">{String(index).padStart(2, "0")}</span>
-        <span className="name">{item.artist}</span>
-      </figcaption>
-    </figure>
-  );
-}
-
-/* ===================================== */
-/*        PAGE 2: SONG DETAIL VIEW       */
-/* ===================================== */
-function SongDetail({ song, onBack, lyrics }) {
+/* ============================= */
+/*   PAGE 2: SONG DETAIL (READ)  */
+/* ============================= */
+function SongDetail({ song, onBack }) {
   if (!song) {
     return (
-      <div className="detail" style={{ padding: 24 }}>
+      <div className="detail">
         <button className="back" onClick={onBack}>← Back</button>
         <p>Song not found.</p>
       </div>
     );
   }
-  const [text, setText] = useState(() => lyrics.get(song.id));
-  useEffect(() => { setText(lyrics.get(song.id)); }, [song.id]);
-  const save = () => lyrics.set(song.id, text);
+
+  // lyrics come from source/data/lyrics.js (pre-filled in VS Code)
+  const lyrics = LYRICS[song.id] || "";
 
   return (
-    <div className="detail" style={{ padding: 24, maxWidth: 980, margin: "0 auto" }}>
+    <div className="detail">
       <button className="back" onClick={onBack}>← Back</button>
 
-      <header
-        className="song-head"
-        style={{ display: "grid", gridTemplateColumns: "160px 1fr", gap: 20, alignItems: "center", marginTop: 10 }}
-      >
-        <img src={song.cover} alt={song.artist} style={{ width: 160, height: 160, borderRadius: 16, objectFit: "cover" }} />
+      <header className="sheet-head">
+        <img className="sheet-cover" src={song.cover} alt={song.artist} />
         <div>
-          <h2 style={{ margin: "0 0 6px" }}>{song.artist}</h2>
-          <p style={{ margin: 0, opacity: 0.8 }}>{song.title}</p>
-          <a className="play" href={song.spotifyUrl} target="_blank" rel="noreferrer">Open on Spotify ↗</a>
+          <h2 className="sheet-artist">{song.artist}</h2>
+          <p className="sheet-title">{song.title}</p>
+          <a className="play" href={song.spotifyUrl} target="_blank" rel="noreferrer">
+            Open on Spotify ↗
+          </a>
         </div>
       </header>
 
-      <section style={{ marginTop: 24 }}>
-        <h3>Lyrics</h3>
-        <textarea
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          onBlur={save}
-          placeholder="Paste or type your lyrics here…"
-        />
-        <div style={{ marginTop: 8, opacity: 0.6, fontSize: 13 }}>
-          Auto-saves to your browser.
+      <section className="sheet-body">
+        <h3 className="section-label">Lyrics</h3>
+        <div className="lyrics-read" aria-label="Lyrics (read only)">
+          {lyrics ? lyrics : "Add lyrics in source/data/lyrics.js for this track id."}
         </div>
       </section>
     </div>

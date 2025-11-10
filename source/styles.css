@@ -1,154 +1,216 @@
-/* Reset & palette */
-*{margin:0;padding:0;box-sizing:border-box}
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap");
-
-:root{
-  --bg:#0e0f12;
-  --panel:#121316;
-  --panel2:#16181d;
-  --ink:#e8e8ea;
-  --muted:#a6a7ab;
-  --green:#1DB954;
-  --ring:#2a2d35;
-}
-
-html,body{height:100%}
-body{
-  background: var(--bg);
-  color: var(--ink);
-  font-family: Manrope, Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  overflow-x:hidden;
-}
-
-/* ===== Ambient background ===== */
-.orbit-wrap{position:relative; min-height:100dvh; padding:40px 16px 80px; overflow:hidden;}
-.ambience{position:absolute; inset:-20% -10% -10% -10%; z-index:0; filter: blur(40px) saturate(1.2);}
-.blob{
-  position:absolute; width:60vw; height:60vw; max-width:800px; max-height:800px; border-radius:50%;
-  background: radial-gradient(closest-side, rgba(29,185,84,.35), rgba(29,185,84,0) 70%);
-  mix-blend-mode: screen; opacity:.35; animation: floaty 18s ease-in-out infinite;
-}
-.blob.b1{ top:-10%; left:-8%; }
-.blob.b2{ bottom:-10%; right:-12%; animation-duration:22s; animation-delay:-6s; }
-@keyframes floaty{ 0%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(4%,-3%,0) scale(1.06)} 100%{transform:translate3d(0,0,0) scale(1)} }
-
-.grain{
-  position:absolute; inset:0; pointer-events:none; opacity:.1;
-  background-image: url("data:image/svg+xml;utf8, \
-  <svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'> \
-  <filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter> \
-  <rect width='120' height='120' filter='url(%23n)' opacity='0.25'/> \
-  </svg>");
-  background-size: 320px 320px;
-  animation: grainShift 8s steps(10) infinite;
-}
-@keyframes grainShift{ 0%{transform:translate(0,0)} 100%{transform:translate(-10px,8px)} }
-
-/* ===== Header ===== */
-.hero-head{position:relative; z-index:2; text-align:center; margin-bottom:10px;}
-.hero-head h1{font-size:clamp(28px,4vw,42px); font-weight:800; letter-spacing:-.02em;}
-.hero-head p{color:var(--muted); margin-top:6px}
-
-/* ===== Perfectly centered stage ===== */
-.stage{
-  position: relative;
-  z-index: 2;
-  width: min(92vw, 780px);
-  aspect-ratio: 1 / 1;            /* square */
-  margin: 24px auto 0;
-  display: grid;
-  place-items: center;            /* centers children */
-}
-
-/* Portal is ABOVE the orbit (so it receives drops) */
-.portal{
-  position: absolute;
-  z-index: 4;                     /* <<< TOP LAYER */
-  width: 240px; height: 240px;
-  border-radius: 50%;
-  border: 2px dashed rgba(255,255,255,.15);
-  display: flex; align-items: center; justify-content: center;
-  transition:border-color .25s ease, box-shadow .25s ease;
-}
-.portal .halo{
-  width: 160px; height: 160px; border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(29,185,84,.15), rgba(29,185,84,0) 70%);
-  box-shadow: 0 0 0 1px rgba(255,255,255,.03) inset;
-  animation: haloPulse 3.5s ease-in-out infinite;
-}
-.portal.hover{ border-color: var(--green); box-shadow: 0 0 0 8px rgba(29,185,84,.08); }
-@keyframes haloPulse{
-  0%{ transform:scale(1); opacity:.9 }
-  50%{ transform:scale(1.06); opacity:.75 }
-  100%{ transform:scale(1); opacity:.9 }
-}
-
-/* Orbit ring centered; spins under portal */
-.orbit{
-  list-style:none;
-  position:absolute; inset:0;
-  z-index: 2;                     /* below portal */
-  animation: spin 40s linear infinite;
-}
-@keyframes spin{ from{ transform: rotate(0deg) } to{ transform: rotate(360deg) } }
-
-/* Each item sits on circle at angle var(--angle) */
-.orbit-item{
-  --R: 300px;                      /* ring radius */
-  position:absolute; left:50%; top:50%;
-  transform: rotate(calc(var(--angle) * 1rad)) translateX(var(--R)) rotate(calc(var(--angle) * -1rad));
-}
-
-/* Cover buttons */
-.cover{
-  position:relative; z-index:3;    /* above ring, below portal outline */
-  width:120px; height:120px;
-  border-radius:18px; overflow:hidden; padding:0; border:1px solid var(--ring);
-  background:var(--panel); cursor:pointer;
-  box-shadow: 0 10px 30px rgba(0,0,0,.32);
-  transition: transform .18s ease, border-color .18s ease, background .18s ease;
-}
-.cover:hover{ transform: translateY(-2px); border-color:#3a3f49; background:var(--panel2); }
-.cover img{ width:100%; height:100%; object-fit:cover; display:block; }
-.tag{
-  position:absolute; left:8px; right:8px; bottom:8px;
-  background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.06);
-  backdrop-filter: blur(4px);
-  border-radius:8px; padding:6px 8px;
-}
-.tag .artist{ font-weight:700; font-size:12px; }
-.tag .title{ color:var(--muted); font-size:11px; }
-
-/* ===== Detail page ===== */
-.detail.dark{
-  max-width: 900px; margin: 40px auto 80px;
-  padding: 22px 16px 48px;
-  background: linear-gradient(180deg, #121316, #0f1013 80%);
-  border: 1px solid var(--ring); border-radius: 18px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.45);
-}
-.back{ background:none; border:none; color:#cfd0d4; cursor:pointer; font-weight:800; margin-bottom:8px; }
-.back:hover{ color: var(--green); }
-
-.sheet-head{
-  display:grid; grid-template-columns: 160px 1fr; gap: 18px; align-items:center;
-  border-bottom: 1px solid var(--ring); padding-bottom: 14px;
-}
-.sheet-cover{ width:160px; height:160px; border-radius:14px; object-fit:cover; box-shadow: 0 10px 28px rgba(0,0,0,.35); }
-.sheet-artist{ font-size: 28px; font-weight: 800; letter-spacing: -.01em; }
-.sheet-title{ color: var(--muted); margin-top: 4px; }
-.play{ display:inline-block; margin-top:10px; background: var(--green); color:#0b0b0b; text-decoration:none; padding:8px 12px; border-radius:8px; font-weight:800; }
-
-/* lyrics block (read-only) */
-.sheet-body{ margin-top: 18px; }
-.section-label{ font-weight:800; letter-spacing:.02em; margin-bottom: 8px; }
-.lyrics-read{
-  white-space: pre-wrap;
-  background: #0f1115;
-  border: 1px solid var(--ring);
-  border-radius: 12px;
-  padding: 14px 16px;
-  line-height: 1.7;
-  color: #e6e7ea;
-}
+/* =========================================================
+   Reset & Palette
+   - Global color tokens and base font
+   - Tweak theme colors here
+   ======================================================= */
+   *{margin:0;padding:0;box-sizing:border-box}
+   @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap");
+   
+   :root{
+     /* Core palette (Spotify-ish) */
+     --bg:#0e0f12;
+     --panel:#121316;
+     --panel2:#16181d;
+     --ink:#e8e8ea;
+     --muted:#a6a7ab;
+     --green:#1DB954;
+     --ring:#2a2d35;
+   
+     /* Animation + layout knobs (change these first) */
+     --ring-radius: 300px;      /* distance of covers from center */
+     --spin-speed: 40s;         /* orbit rotation duration (smaller = faster) */
+     --portal-size: 240px;      /* outer drop zone diameter */
+     --portal-halo: 160px;      /* inner glow diameter */
+     --cover-size: 120px;       /* album tile width/height */
+     --corner: 18px;            /* rounded corners for covers */
+   }
+   
+   html,body{height:100%}
+   body{
+     background: var(--bg);
+     color: var(--ink);
+     font-family: Manrope, Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+     -webkit-font-smoothing: antialiased;
+     overflow-x:hidden;
+   }
+   
+   /* =========================================================
+      Ambient Background (soft blobs + subtle grain)
+      - purely decorative ambiance behind everything
+      ======================================================= */
+   .orbit-wrap{position:relative; min-height:100dvh; padding:40px 16px 80px; overflow:hidden;}
+   .ambience{position:absolute; inset:-20% -10% -10% -10%; z-index:0; filter: blur(40px) saturate(1.2);}
+   
+   /* Glowing green blobs (adjust alpha for stronger/weaker glow) */
+   .blob{
+     position:absolute; width:60vw; height:60vw; max-width:800px; max-height:800px; border-radius:50%;
+     background: radial-gradient(closest-side, rgba(29,185,84,.35), rgba(29,185,84,0) 70%);
+     mix-blend-mode: screen; opacity:.35; animation: floaty 18s ease-in-out infinite;
+   }
+   .blob.b1{ top:-10%; left:-8%; }
+   .blob.b2{ bottom:-10%; right:-12%; animation-duration:22s; animation-delay:-6s; }
+   @keyframes floaty{ 0%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(4%,-3%,0) scale(1.06)} 100%{transform:translate3d(0,0,0) scale(1)} }
+   
+   /* Film grain overlay (adds texture) */
+   .grain{
+     position:absolute; inset:0; pointer-events:none; opacity:.1;
+     background-image: url("data:image/svg+xml;utf8, \
+     <svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'> \
+     <filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter> \
+     <rect width='120' height='120' filter='url(%23n)' opacity='0.25'/> \
+     </svg>");
+     background-size: 320px 320px;
+     animation: grainShift 8s steps(10) infinite;
+   }
+   @keyframes grainShift{ 0%{transform:translate(0,0)} 100%{transform:translate(-10px,8px)} }
+   
+   /* =========================================================
+      Header (title + subtitle)
+      ======================================================= */
+   .hero-head{position:relative; z-index:2; text-align:center; margin-bottom:10px;}
+   .hero-head h1{font-size:clamp(28px,4vw,42px); font-weight:800; letter-spacing:-.02em;}
+   .hero-head p{color:var(--muted); margin-top:6px}
+   
+   /* =========================================================
+      Stage (perfectly centered square area)
+      - The orbit ring and the portal live here
+      - To make the whole system bigger/smaller, change width
+      ======================================================= */
+   .stage{
+     position: relative;
+     z-index: 2;
+     width: min(92vw, 780px);
+     aspect-ratio: 1 / 1;            /* square keeps layout stable */
+     margin: 24px auto 0;
+     display: grid;
+     place-items: center;            /* forces true center */
+   }
+   
+   /* =========================================================
+      Portal (drop target)
+      - Increase --portal-size / --portal-halo to make larger
+      - The .hover state appears while dragging over
+      ======================================================= */
+   .portal{
+     position: absolute;
+     z-index: 4;                     /* above orbit so it catches drops */
+     width: var(--portal-size); height: var(--portal-size);
+     border-radius: 50%;
+     border: 2px dashed rgba(255,255,255,.15);
+     display: flex; align-items: center; justify-content: center;
+     transition:border-color .25s ease, box-shadow .25s ease;
+   }
+   .portal .halo{
+     width: var(--portal-halo); height: var(--portal-halo); border-radius: 50%;
+     background: radial-gradient(ellipse at center, rgba(29,185,84,.15), rgba(29,185,84,0) 70%);
+     box-shadow: 0 0 0 1px rgba(255,255,255,.03) inset;
+     animation: haloPulse 3.5s ease-in-out infinite;
+   }
+   .portal.hover{ border-color: var(--green); box-shadow: 0 0 0 8px rgba(29,185,84,.08); }
+   @keyframes haloPulse{
+     0%{ transform:scale(1); opacity:.9 }
+     50%{ transform:scale(1.06); opacity:.75 }
+     100%{ transform:scale(1); opacity:.9 }
+   }
+   
+   /* =========================================================
+      Orbit (spinning ring)
+      - Uses CSS rotate animation
+      - Speed controlled by --spin-speed
+      ======================================================= */
+   .orbit{
+     list-style:none;
+     position:absolute; inset:0;
+     z-index: 2;                     /* below portal */
+     animation: spin var(--spin-speed) linear infinite;
+   }
+   @keyframes spin{ from{ transform: rotate(0deg) } to{ transform: rotate(360deg) } }
+   
+   /* OPTIONAL: Pause all motion when hovering the stage (nicer for drag) */
+   .stage:hover .orbit { animation-play-state: paused; }
+   
+   /* =========================================================
+      Orbit item placement
+      - Each child sits on a circle at angle var(--angle)
+      - --R controls radius (we feed --ring-radius from :root)
+      - Counter-rotation keeps the covers upright
+      ======================================================= */
+   .orbit-item{
+     --R: var(--ring-radius);        /* ring radius knob */
+     position:absolute; left:50%; top:50%;
+     transform: rotate(calc(var(--angle) * 1rad))
+                translateX(var(--R))
+                rotate(calc(var(--angle) * -1rad));
+   }
+   
+   /* =========================================================
+      Cover buttons (album tiles)
+      - Size controlled by --cover-size
+      - Edit border, shadow, and radius for style
+      ======================================================= */
+   .cover{
+     position:relative; z-index:3;    /* above ring, below portal outline */
+     width: var(--cover-size); height: var(--cover-size);
+     border-radius: var(--corner);
+     overflow:hidden; padding:0; border:1px solid var(--ring);
+     background:var(--panel); cursor:pointer;
+     box-shadow: 0 10px 30px rgba(0,0,0,.32);
+     transition: transform .18s ease, border-color .18s ease, background .18s ease;
+   }
+   .cover:hover{ transform: translateY(-2px); border-color:#3a3f49; background:var(--panel2); }
+   .cover img{ width:100%; height:100%; object-fit:cover; display:block; }
+   
+   /* Small info pill at bottom of each cover */
+   .tag{
+     position:absolute; left:8px; right:8px; bottom:8px;
+     background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.06);
+     backdrop-filter: blur(4px);
+     border-radius:8px; padding:6px 8px;
+   }
+   .tag .artist{ font-weight:700; font-size:12px; }
+   .tag .title{ color:var(--muted); font-size:11px; }
+   
+   /* =========================================================
+      Detail Page (song view)
+      - Panel with cover, title, Spotify link, and lyrics
+      ======================================================= */
+   .detail.dark{
+     max-width: 900px; margin: 40px auto 80px;
+     padding: 22px 16px 48px;
+     background: linear-gradient(180deg, #121316, #0f1013 80%);
+     border: 1px solid var(--ring); border-radius: 18px;
+     box-shadow: 0 20px 60px rgba(0,0,0,.45);
+   }
+   .back{ background:none; border:none; color:#cfd0d4; cursor:pointer; font-weight:800; margin-bottom:8px; }
+   .back:hover{ color: var(--green); }
+   
+   .sheet-head{
+     display:grid; grid-template-columns: 160px 1fr; gap: 18px; align-items:center;
+     border-bottom: 1px solid var(--ring); padding-bottom: 14px;
+   }
+   .sheet-cover{ width:160px; height:160px; border-radius:14px; object-fit:cover; box-shadow: 0 10px 28px rgba(0,0,0,.35); }
+   .sheet-artist{ font-size: 28px; font-weight: 800; letter-spacing: -.01em; }
+   .sheet-title{ color: var(--muted); margin-top: 4px; }
+   .play{ display:inline-block; margin-top:10px; background: var(--green); color:#0b0b0b; text-decoration:none; padding:8px 12px; border-radius:8px; font-weight:800; }
+   
+   /* Lyrics block (read-only) */
+   .sheet-body{ margin-top: 18px; }
+   .section-label{ font-weight:800; letter-spacing:.02em; margin-bottom: 8px; }
+   .lyrics-read{
+     white-space: pre-wrap;
+     background: #0f1115;
+     border: 1px solid var(--ring);
+     border-radius: 12px;
+     padding: 14px 16px;
+     line-height: 1.7;
+     color: #e6e7ea;
+   }
+   
+   /* =========================================================
+      Accessibility: Reduce Motion
+      - Disables animations for users who prefer less motion
+      ======================================================= */
+   @media (prefers-reduced-motion: reduce){
+     .orbit, .blob, .grain, .portal .halo { animation: none !important; }
+   }
+   

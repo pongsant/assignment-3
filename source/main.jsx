@@ -60,23 +60,12 @@ function buildItemsFromHistory(history) {
   const items = [];
   for (const id of order) {
     const row = byId.get(id);
-    if (row) {
-      items.push({ ...row });
-    } else {
-      items.push({
-        id,
-        title: "(title from history not found)",
-        artist: "(artist from history not found)",
-        spotifyUrl: trackUrl(id),
-      });
-    }
+    if (row) items.push({ ...row });
+    else items.push({ id, title: "(title not found)", artist: "(artist not found)", spotifyUrl: trackUrl(id) });
   }
   return items.slice(0, 15).map((s) => ({ ...s, cover: coverForArtist(s.artist) }));
 }
 
-/* ============================= */
-/*              APP              */
-/* ============================= */
 function App() {
   const route = useRoute();
   const [items, setItems] = useState([]);
@@ -100,25 +89,9 @@ function OrbitHome({ items }) {
   const portalRef = useRef(null);
   const [hover, setHover] = useState(false);
 
-  // ensure portal receives drops (on both ring and inner halo)
   useEffect(() => {
     const dz = portalRef.current;
     if (!dz) return;
-
-    const setOn = (el) => {
-      if (!el) return;
-      el.addEventListener("dragenter", onEnter);
-      el.addEventListener("dragover", onOver);
-      el.addEventListener("dragleave", onLeave);
-      el.addEventListener("drop", onDrop);
-    };
-    const setOff = (el) => {
-      if (!el) return;
-      el.removeEventListener("dragenter", onEnter);
-      el.removeEventListener("dragover", onOver);
-      el.removeEventListener("dragleave", onLeave);
-      el.removeEventListener("drop", onDrop);
-    };
 
     function onEnter(e){ e.preventDefault(); setHover(true); }
     function onOver(e){ e.preventDefault(); setHover(true); }
@@ -130,17 +103,25 @@ function OrbitHome({ items }) {
       if (id) location.hash = `#/song/${encodeURIComponent(id)}`;
     }
 
-    setOn(dz);
-    setOn(dz.querySelector(".halo"));
+    const halo = dz.querySelector(".halo");
+    [dz, halo].forEach(el => {
+      el.addEventListener("dragenter", onEnter);
+      el.addEventListener("dragover", onOver);
+      el.addEventListener("dragleave", onLeave);
+      el.addEventListener("drop", onDrop);
+    });
 
-    // global: allow drop anywhere so browser doesn't block it
     const prevent = (e) => e.preventDefault();
     window.addEventListener("dragover", prevent);
     window.addEventListener("drop", prevent);
 
     return () => {
-      setOff(dz);
-      setOff(dz.querySelector(".halo"));
+      [dz, halo].forEach(el => {
+        el && el.removeEventListener("dragenter", onEnter);
+        el && el.removeEventListener("dragover", onOver);
+        el && el.removeEventListener("dragleave", onLeave);
+        el && el.removeEventListener("drop", onDrop);
+      });
       window.removeEventListener("dragover", prevent);
       window.removeEventListener("drop", prevent);
     };
@@ -169,22 +150,25 @@ function OrbitHome({ items }) {
       </header>
 
       <div className="stage">
+        {/* carrier is perfectly centered and does subtle drift */}
+        <div className="orbit-carrier">
+          <ul className="orbit" aria-label="Orbiting covers">
+            {items.map((s, i) => (
+              <li
+                key={s.id}
+                className="orbit-item"
+                style={{ "--angle": angles[i] }}
+              >
+                <CoverButton item={s} />
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* centered portal */}
         <div ref={portalRef} className={`portal ${hover ? "hover" : ""}`}>
           <div className="halo" />
         </div>
-
-        {/* rotating ring */}
-        <ul className="orbit" aria-label="Orbiting covers">
-          {items.map((s, i) => (
-            <li
-              key={s.id}
-              className="orbit-item"
-              style={{ "--angle": angles[i] }}
-            >
-              <CoverButton item={s} />
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );
@@ -194,7 +178,6 @@ function CoverButton({ item }) {
   const onDragStart = (e) => {
     e.dataTransfer.setData("text/songId", item.id);
     e.dataTransfer.effectAllowed = "move";
-    // nicer drag image (use the cover itself)
     const img = new Image();
     img.src = item.cover;
     img.onload = () => e.dataTransfer.setDragImage(img, 60, 60);
@@ -249,12 +232,11 @@ function SongDetail({ song, onBack }) {
       <section className="sheet-body">
         <h3 className="section-label">Lyrics</h3>
         <div className="lyrics-read">
-          {lyrics ? lyrics : "/source/data/lyrics.js"}
+          {lyrics ? lyrics : "Add lyrics for this track id in source/data/lyrics.js"}
         </div>
       </section>
     </div>
   );
 }
 
-/* mount */
 createRoot(document.getElementById("root")).render(<App />);

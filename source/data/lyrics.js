@@ -311,23 +311,582 @@ Okay, okay, okay, okay, okay, o—
 (La-la-la, la-la—)
 One more time?`,
   // Drake — NOKIA
-  "2u9S9JJ6hTZS3Vf22HOZKg": ``,
+  "2u9S9JJ6hTZS3Vf22HOZKg": `[Part I]
+
+[Pre-Chorus: Drake]
+Who's callin' my phone? (Who's callin' that shit?)
+Who's callin' my phone? (Who's callin' that shit?)
+Who's callin' my phone? (Who's callin' that shit?)
+Who's callin' my phone? (Who's callin' that shit?)
+Who's callin' my phone? (Who? Who?)
+Who's callin' my phone? (Who? Who?)
+Who's callin' my phone? (Yeah, yeah)
+Who's callin' my phone? (OVO Sound, 2025)
+Who's callin' my phone? (Who's callin' that shit?)
+Who's callin' my phone?
+
+[Chorus: Elkan & Drake]
+Is it Stacy? (Who's callin' my phone?)
+Is it Becky? (Who's callin' my phone?)
+Is it Keisha? (Who's callin' my phone?)
+Is it Ashley? (Who's callin' my phone?)
+Was it Dani? (Who's callin' my phone?)
+Is it PARTY? (Who's callin' my phone?)
+Where's the function? (Where the fuck the function?)
+Send the addy (Where the fuck the function?)
+
+[Verse: Drake]
+The way I feel right now, I feel like we need to be all alone
+So if you just playin' around, you need to tell your girl, "Take your fine ass home," and that's real
+Stop teasin' me, yeah, what? Stop teasin' me
+I could change your life so easily
+I keep beggin' you to stay, but you're leavin' me
+Leavin' me, we got sticks in the club illegally
+Got the whole 6ix side, they believe in me
+We got members east of the DVP
+We got members west on the 401
+We had a lock on the game, but it's more to come
+You gotta pop that ass 'til the morning come
+You want shots for the girls? Then order some
+
+[Pre-Chorus: Drake]
+Who's callin' my phone? (Who's callin' that?)
+Who's callin' my phone? (Who's callin' that shit?)
+Who's callin' my phone? (Who's callin' that shit?)
+Who's callin' my phone? (Who's callin' that shit?)
+Who's callin' my phone? (Who? Who?)
+Who's callin' my phone? (Who? Who?)
+Who's callin' my phone? (Who? Who?)
+Who's callin' my— (Ayy)
+
+[Chorus: Elkan & Drake]
+Is it Stacy? (Who's callin' my phone?)
+Is it Becky? (Who's callin' my phone?)
+Is it Keisha? (Who's callin' my phone?)
+Is it Ashley? (Who's callin' my phone?)
+Was it Dani? (Who's callin' my phone?)
+Is it PARTY? (Who's callin' my phone?)
+Where's the function? (Where the fuck the function?)
+Send the addy (Where the fuck the function?)
+
+[Part II]
+
+[Intro: Elkan]
+Baby girl
+Baby girl
+Baby girl
+
+[Chorus: Drake & Elkan]
+Baby girl
+Let me see you do your dance, let me see you twirl
+Shakin' ass in the club with your homegirls
+Take a pic for the 'Gram, show the whole world (Show the whole world), yeah
+Is that your bestie?
+I'ma ice both of y'all like Gretzky
+I'ma at you like bless me
+Hit the dance floor, get nasty, impress me
+Baby girl
+Let me see you do your dance, let me see you twirl
+Shakin' ass in the club with your homegirls
+Take a pic for the 'Gram, show the whole world (Show the whole world), yeah
+Is that your bestie?
+I'ma ice both of y'all like Gretzky
+I'ma at you like bless me
+Hit the dance floor, get nasty, impress me
+
+[Verse: Drake]
+Ayy, how many hoes in this club?
+Is it just me and you, my love?
+I don't mean to call you no ho
+I just heard about the things that you do, my love
+And you're just like me, if it's true, my love, ayy
+You could see right through my love, ayy
+I see your waist shrunk, my love, ayy
+You got some bass in the trunk, my love, damn
+How many hoes in this club?
+Is it really just me, my love?
+You know my dad 'nem pimpin' for real
+You ever been down to Memphis, Tennessee, my love? Uh
+I ain't sayin' I agree, my love
+I'm just tellin' you the things that I see, my love
+I got drinks, jokes, sex, and cash
+Those are four things I can guarantee, my love, ayy
+
+[Chorus: Drake & Elkan]
+Baby girl
+Let me see you do your dance, let me see you twirl
+Shakin' ass in the club with your homegirls
+Take a pic for the 'Gram, show the whole world (Show the whole world), yeah
+Is that your bestie?
+I'ma ice both of y'all like Gretzky
+I'ma at you like bless me
+Hit the dance floor, get nasty, impress me
+Baby girl
+Let me see you do your dance, let me see you twirl
+Shakin' ass in the club with your homegirls
+Take a pic for the 'Gram, show the whole world (Show the whole world), yeah
+Is that your bestie?
+I'ma ice both of y'all like Gretzky
+I'ma at you like bless me
+Hit the dance floor, get nasty, impress me`,
   // GAVIN:D — ลั่นไก
-  "4gfNL0Jjz8zBey4uhkZJnG": ``,
+  "4gfNL0Jjz8zBey4uhkZJnG": `รู้แล้ว ฉันรู้ว่าเธอนั้นเกลียด ฉันแล้ว
+มันคงไม่มีทางเหมือนเดิม มันคงไม่มีทางที่เราจะกลับไป
+ที่ไหน แล้วฉันจะต้องไปหลบ ที่ไหน
+เธอถึงจะพอใจ ไอ้คำที่เธอบอกว่าฉันนั้นคงต้องหายไป
+
+ก็เหมือนเธอ เอาปืน มาเล็งที่หัวใจ
+จะเป็นหรือตาย มันคงอยู่ที่เธอ
+ฉันจะไม่ขัดขืน เมื่อความรักเราคงไม่ฟื้น
+เอาเลยที่รัก ถ้าเธอนั้นพอใจ
+ปืนในมือที่เธอแค่ลั่นไก
+รักเราก็สลาย พร้อมกับฉันที่มันคงหายไปตลอดกาล
+
+Baby choose me เอาปืนมาเล็งตรงที่หน้าผาก
+เลือดสาด ภาพตัด ไม่มีรักที่ซื่อสัตย์
+ความทรงจำ ที่ฉันนั้นยังจดจำ ก็มีแต่เรื่องดี ๆ ที่เธอกับฉันนั้นเคยได้ทำมาก็
+แม้ฉันนั้นควรต้องตาย แต่รักของฉันไม่มีวันหาย ต่อให้เธอยิงฉันตายอีกกี่ครั้ง
+
+ก็เหมือนเธอ เอาปืน มาเล็งที่หัวใจ
+จะเป็นหรือตาย มันคงอยู่ที่เธอ
+ฉันจะไม่ขัดขืน เมื่อความรักเราคงไม่ฟื้น
+เอาเลยที่รัก ถ้าเธอนั้นพอใจ
+ปืนในมือที่เธอแค่ลั่นไก
+รักเราก็สลาย พร้อมกับฉันที่มันคงหายไปตลอดกาล
+
+Baby choose me เอาปืนมาเล็งตรงที่หน้าผาก
+เลือดสาด ภาพตัด ไม่มีรักที่ซื่อสัตย์
+ความทรงจำ ที่ฉันนั้นยังจดจำ ก็มีแต่เรื่องดี ๆ ที่เธอกับฉันนั้นเคยได้ทำมาก็
+ถึงแม้ฉันนั้นควรต้องตาย แต่รักของฉันไม่มีวันหาย ต่อให้เธอยิงฉันตายอีกกี่ครั้ง`,
   // The Weeknd — The Abyss (feat. Lana Del Rey)
-  "5ZDKPFRZC6QlJpf8bCIXTs": ``,
+  "5ZDKPFRZC6QlJpf8bCIXTs": `Verse 1: The Weeknd]
+I tried my best to not let you go
+I don't like the view
+From halfway down
+Just promise me that it won't be slow
+Will I feel the impact of the ground?
+I tried to be something that I'll never be
+Why waste another precious hour?
+Why waste another precious ounce?
+I'd rather leave somewhat of a legacy
+Familiar
+A thought that's so familiar
+
+[Chorus: The Weeknd]
+Let me close my eyes with dignity
+Let's end it all, the world's not far behind
+So what's the point of staying?
+It's going up in flames, I know
+Yes, I know, ooh
+Oh-oh-oh
+
+[Segue: Lana Del Rey]
+Hey-hey
+Oh-oh
+(Hey)
+
+[Verse 2: The Weeknd]
+Just hold my heartbeat close to you
+Remember how it always beats for you
+I'm falling at the speed of light
+I'm staring at your shrinking face, don't cry
+You know my heart belongs to you
+One last time, say that you want me too
+The only words that gave me life
+Now I'll see you on the other side
+
+[Bridge: The Weeknd]
+Oh-oh, oh-oh, oh-oh
+Oh-oh, oh-oh, oh-oh
+Oh-oh, oh-oh, oh-oh
+Oh-oh, oh-oh, oh-oh
+
+[Outro: Lana Del Rey & The Weeknd]
+Oh, mama, I'll pray
+I'm running away
+Oh-oh
+Hey-hey (Oh, no)
+Oh-oh
+Hey-hey
+Is a threat not a promise? (Mmm)
+If you're looking for rage (Mmm, oh)
+If you're looking for ragin'
+Quiet for days
+Baby, running away
+Ayy-yeah
+It's a threat, not a promise
+It's a threat, not a promise
+Yeah-yeah
+Ah-ha (Oh)
+Ah-ha (Oh)
+Ah-ha
+Ah-ha
+Mama, I'll pray
+Mama, I'll pray`,
   // YOUNGOHM — ไฟเย็น
-  "4ZU069vAYkr7soRzdzNdjF": ``,
+  "4ZU069vAYkr7soRzdzNdjF": `ไอคนอย่างฉันมันจะไปรักใครเป็น
+หัวใจของฉันมันเป็นเหมือนดังไฟเย็น
+ครั้งแรกที่เธอสัมผัส
+มันอาจจะดูอบอุ่นใจ
+แล้วมันก็หนาวเหน็บ
+ไม่รู้มันเป็นเพราะเหตุใดจริงจริง
+ไม่ว่ากี่ครั้งและกี่คราว
+รักใครกี่คนก็ปวดร้าว
+ฉันภาวนากับหมู่ดาว
+อยากให้มีสักคนที่อยู่ยาว
+เฝ้าภาวนา to the moon
+ร้องไปผ่านเสียง auto tune
+ฉันนั้นไม่เข้าใจเลย
+ฉันอาจแค่เคยรักเธอหรือว่าไม่เคยรักเลย
+ทำไมตอนเธอไปฉันไม่ร้องไห้
+เหมือนว่าฉันไม่เสียใจกับทุกสิ่งที่เสียไป
+หรือต้องอยู่คนเดียวไปจนวันตาย
+กว่าวันนั้นคงไม่นาน
+ฉันก็แค่ต้องอยู่กับความอ้างว้างมันไปอย่างงี้
+โฮ้โอโอโอ
+หรือว่าฉันมันไม่มีหัวใจอย่างที่ใครเขาพูดกัน
+แต่เธอรู้บ้างไหมฉันพยายาม
+แต่เหมือนทำไปเท่าไรก็ไม่มีใครเข้าใจ
+ลึกลงไปข้างในมันทรมานดีแล้วที่ปล่อยให้เธอนั้นไป
+ไม่จำเป็นต้องทนอยู่กับคนอย่างฉันต่อไปอย่างงี้
+โฮ้โอโอโอ
+รักเอ๋ยรักเป็นเช่นไรช่วยบอกฉันที
+ทำไมถึงเจ็บฤดีในทุกทุกทีเศร้าหมองอารมณ์
+รักเอ๋ยรักรักเป็นเช่นไรช่วยบอกฉันหน่อย
+อย่าปล่อยให้ฉันนั้นคอย
+ใจลอยกับรักอย่างงี้
+ฉันอาจแค่เคยรักเธอหรือว่าไม่เคยรักเลย
+ทำไมตอนเธอไปฉันไม่ร้องไห้
+เหมือนว่าฉันไม่เสียใจกับทุกสิ่งที่เสียไป
+หรือต้องอยู่คนเดียวไปจนวันตาย
+กว่าวันนั้นคงไม่นาน
+ฉันก็แค่ต้องอยู่กับความอ้างว้างมันไปอย่างงี้
+โฮ้โอโอโอ
+หรือว่าฉันมันไม่มีหัวใจอย่างที่ใครเขาพูดกัน
+แต่เธอรู้บ้างไหมฉันพยายาม
+แต่เหมือนทำไปเท่าไรก็ไม่มีใครเข้าใจ
+ลึกลงไปข้างในมันทรมานดีแล้วที่ปล่อยให้เธอนั้นไป
+ไม่จำเป็นต้องทนอยู่กับคนอย่างฉันต่อไปอย่างงี้
+โฮ้โอโอโอ
+ฉันอาจแค่เคยรักเธอหรือว่าไม่เคยรักเลย
+ทำไมตอนเธอไปฉันไม่ร้องไห้
+เหมือนว่าฉันไม่เสียใจกับทุกสิ่งที่เสียไป
+หรือต้องอยู่คนเดียวไปจนวันตาย
+กว่าวันนั้นคงไม่นาน
+ฉันก็แค่ต้องอยู่กับความอ้างว้างมันไปอย่างงี้
+โฮ้โอโอโอ
+หรือว่าฉันมันไม่มีหัวใจอย่างที่ใครเขาพูดกัน
+แต่เธอรู้บ้างไหมฉันพยายาม
+แต่เหมือนทำไปเท่าไรก็ไม่มีใครเข้าใจ
+ลึกลงไปข้างในมันทรมานดีแล้วที่ปล่อยให้เธอนั้นไป
+ไม่จำเป็นต้องทนอยู่กับคนอย่างฉันต่อไปอย่างงี้
+โฮ้โอโอโอ`,
   // The Marías — No One Noticed
-  "3siwsiaEoU4Kuuc9WKMUy5": ``,
+  "3siwsiaEoU4Kuuc9WKMUy5": `[Verse 1]
+Maybe I
+Lost my mind
+No one noticed
+No one noticed
+
+[Chorus]
+It's getting old (I'd kinda like it if you'd call me)
+All alone ('Cause I'm so over bein' lonely)
+May have lost it (I need a virtual connection)
+I have lost it (Be my video obsession)
+
+[Verse 2]
+No one tried
+To read my eyes
+No one but you
+Wish it weren't true
+
+[Chorus]
+Maybe I (I'd kinda like it if you'd call me)
+It's not right ('Cause I'm so over bein' lonely)
+Make you mine (I need a virtual connection)
+Take our time (Be my video obsеssion)
+
+[Refrain]
+Come on, don't leave mе, it can't be that easy, babe
+If you believe me, I guess I'll get on a plane
+Fly to your city, excited to see your face
+Hold me, console me, and then I'll leave without a trace
+Come on, don't leave me, it can't be that easy, babe
+If you believe me, I guess I'll get on a plane
+Fly to your city, excited to see your face
+Hold me, console me, then I'll leave without a trace
+Come on, don't leave me, it can't be that easy, babe
+If you believe me, I guess I'll get on a plane
+Fly to your city, excited to see your face
+Hold me, console me, and then I'll leave without a trace
+(Maybe I) Come on, don't leave me, it can't be that easy, babe
+(It's not right) If you believe me, I guess I'll get on a plane
+(Make you mine) Fly to your city, excited to see your face
+(Take our time) Hold me, console me, and then I'll leave without a trace
+
+[Chorus]
+I'd kinda like it if you'd call me
+(It's not right) 'Cause I'm so over bein' lonely
+(Make you mine) I need a virtual connection
+(Take our time) Be my video obsession`,
   // Saran — ค่ำคืนนี้
-  "3rAEwhZCDnP6evXJTfjSOa": ``,
+  "3rAEwhZCDnP6evXJTfjSOa": `กี่ค่ำคืนที่ผ่านกี่เรื่องราวที่เจอในตอนนี้
+จากที่เคยว่าดีเคยงดงามที่จริง
+กลับต้องเป็นความสับสนหัวใจ
+เธอจากไปแล้วคงจะไม่เหลือรักที่เคยมีอยู่
+ความรู้สึกนี้มันคงชัดเจนแล้วเธอ เฮ้อเออ
+แต่ทำไมยังคิดถึงเธออยู่ทุกวัน
+ปล่อยค่ำคืนนี้ไปให้สายลมพาพัด
+พัดเอาความรู้สึกที่ยังคิดถึงและยังห่วงใยให้เธอได้รับ
+จากฉันคนเดิมที่ยังคงคิดถึงเธอทุกวัน
+ต้องทำยังไงให้ลืมเธอได้ลงให้ลืมเธอได้ลง
+Yeah Saran
+เก็บเธอไว้ในความทรงจำ
+ฉันยังเห็นเธออยู่ในท้วง
+ทำนองที่ฉันเป็นคนประพันธ์ (ฮ้าฮา)
+โดยบทหลักหลักยังมีเธอเข้าไปร่วม
+ฉันบอกคนอื่นว่าลืมเธออยู่ประจำ
+ทั้งที่จริงจริงเธอยังคงอยู่ในห้วง
+เหตุการณ์ต่างต่างตกผลึกในภวังค์เลย (ฮา)
+ขอให้โชคดีนะไอ้อ้วน
+ลบรูปเราจนมันเหลือภาพเดี่ยว
+คิดถึงตอนนั่งด้วยกันคาบบ่าย
+อาจเป็นเพราะช่วงอายุคาบเกี่ยว
+เลยทำให้ความทรงจำจนมาเป็นภาพถ่าย (ฮา)
+และทุกวันที่บอกว่าฝันดีเธอ
+แต่เธอว่าน่าเบื่อน่าหน่าย
+อิสระแลกกับการไม่มีเธอ
+ฉันคิดว่ามันไม่คุ้มค่าจ่าย
+เพียงคำคำเดียวที่ฉันจำไม่เคยลืม
+วันที่เธอเดินออกไปออกจากที่ที่เคยยืน (ฮา)
+ความรู้สึกเหมือนเอาคางไปเกยปืน (ฮา)
+กูไม่น่าเข้าไปรักเขาเลยมึง (ฮา)
+เพื่อนมันก็บอกว่าอย่าไปพรรณนา
+ก็เพราะความรักเป็นเรื่องปรัมปรา
+เพราะกูมันแค่คนธรรมดา
+Ride on street but I looked the star (ฮา)
+มานั่งล้อมวงอยู่กับ academy
+จากคนที่เคยรักกันอยู่อยู่จะมาเป็นพี่
+จริงจริงความรักมันสามารถกลายเป็นมีด
+เข้ามาทิ่มเข้ามาแทงหัวใจได้อย่างเต็มที่ (ฮา)
+บอกกับเพื่อนว่าเรื่องเมากูจะกลับมาเต็มที่
+I feel so cold when I feeling lonely (ฮา)
+แค่ภาวนาว่าจะลืมเธอได้ลง (ฮ้า)
+ฉันคงกลับไป smoke with my homie (ฮาฮ้าฮา)
+ปล่อยค่ำคืนนี้ไปให้สายลมพาพัด (Saran)
+พัดเอาความรู้สึกที่ยังคิดถึงและยังห่วงใยให้เธอได้รับ
+จากฉันคนเดิมที่ยังคงยังคิดถึงเธอทุกวัน
+ต้องทำยังไงให้ลืมเธอได้ลง
+ปล่อยค่ำคืนนี้ไปให้สายลมพาพัด (ฮา)
+พัดเอาความรู้สึกที่ยังคิดถึงและยังห่วงใยให้เธอได้รับ (ฮา)
+จากฉันคนเดิมที่ยังคงยังคิดถึงเธอทุกวัน (ฮา ฮา ฮ้าอาโอว)
+ต้องทำยังไงให้ลืมเธอได้ลง`,
   // Three Man Down — เพลงรัก
-  "1THWgXia63L6sds6dIMlI9": ``,
+  "1THWgXia63L6sds6dIMlI9": `ในค่ำคืนที่ไม่มีดาวบนฟ้า
+เป็นค่ำคืนที่แสนจะธรรมดา
+บรรยากาศรอบตัวไม่ค่อยช่วยฉันเลย
+อยากจะดึงมือเธอมากุมเอาไว้
+บอกว่ารักเธอมากมายแค่ไหน
+แต่ว่าฉันก็ไม่เคยได้พูดไป
+เพราะปกติ ฉันพูดไม่เก่ง
+เธอก็คงจะรับและรู้เรื่องนี้ดีกว่าใครใคร
+และเหตุผลที่ฉันไม่พูดอะไร
+ที่หวานซึ้งหรือกินใจอย่างใครเขา
+เพราะฉันคิดว่าเพลงรัก ที่มอบให้เธอนั้น
+มันควรจะมีได้แค่เพลงเดียวเท่านั้นพอ
+หากว่ามีมากเกินไป คำหวานซึ้งใดใด
+อาจจะทำให้ความหมายน้อยลงไป อยากให้รู้
+ให้เราสื่อสารผ่านดวงตา ทุกครั้งที่มองกัน
+ให้เธอรับและรู้เอาไว้ว่าฉันไม่เคยหายไป
+ดาวบนฟ้าที่เลือนลาง เพราะแสงของเมืองใหญ่
+แต่ว่ามันไม่เคยจากไปไหน
+เพราะปกติ ฉันพูดไม่เก่ง
+เธอก็คงจะรับและรู้เรื่องนี้ดีกว่าใครใคร
+และเหตุผลที่ฉันไม่พูดอะไร
+ที่หวานซึ้งหรือกินใจอย่างใครเขา
+เพราะฉันคิดว่าเพลงรัก ที่มอบให้เธอนั้น
+มันควรจะมีได้แค่เพลงเดียวเท่านั้นพอ
+หากว่ามีมากเกินไป คำหวานซึ้งใดใด
+อาจจะทำให้ความหมายน้อยลงไป
+เช่นเดียวกับคำว่ารัก หากพูดบ่อยบ่อยครั้ง
+กลัวเธอจะไม่รู้สึกซึ้งเหมือนเมื่อก่อน
+ถึงไม่ค่อยได้พูดไป แต่ว่าข้างในใจ
+คนคนนี้รักเธอมากกว่าผู้ใด อยากให้รู้
+That's the only one love song for you
+เพลงที่ฉันเขียนให้เธอ จะไม่มีวันหมดความหมาย
+ต่อให้ฉันไม่อยู่อีกแล้ว หรือว่าร้อยปีพ้นไป
+รักของฉันจะอยู่ตลอดไป
+เพราะฉันคิดว่าเพลงรัก ที่มอบให้เธอนั้น
+มันควรจะมีได้แค่เพลงเดียวเท่านั้นพอ
+หากว่ามีมากเกินไป คำหวานซึ้งใดใด
+อาจจะทำให้ความหมายน้อยลงไป
+เช่นเดียวกับคำว่ารัก หากพูดบ่อยบ่อยครั้ง
+กลัวเธอจะไม่รู้สึกซึ้งเหมือนเมื่อก่อน (เหมือนเมื่อก่อน)
+ถึงไม่ค่อยได้พูดไป แต่ว่าข้างในใจ
+คนคนนี้รักเธอมากกว่าผู้ใด อยากให้รู้`,
   // Tokio Hotel — Monsoon - Gateway Version
-  "1QDvX3Oa7xM0So8P7qYqVN": ``,
+  "1QDvX3Oa7xM0So8P7qYqVN": `I'm staring at a broken door
+There's nothing left here anymore
+My room is cold
+It's making me insane
+I've been waiting here so long
+But now the moment seems to have come
+I see the dark clouds coming up again
+Running through the monsoon
+Beyond the world
+To the end of time
+Where the rain won't hurt
+Fighting the storm
+Into the blue
+And when I lose myself I think of you
+Together we'll be running somewhere new
+Through the monsoon
+Just me and you
+A half moon's fading from my sight
+I see your vision in its light
+But now it's gone and left me so alone
+I know I have to find you now
+Can't hear your name, I don't know how
+Why can't we make this darkness feel like home?
+Running through the monsoon
+Beyond the world
+To the end of time
+Where the rain won't hurt
+Fighting the storm
+Into the blue
+And when I lose myself I think of you
+Together we'll be running somewhere new
+And nothing can hold me back from you
+Through the monsoon
+Hey!
+Hey!
+I'm fighting all this power
+Coming in my way
+Let it take me straight to you
+I'll be running night and day
+I'll be with you soon
+Just me and you
+We'll be there soon
+So soon
+Running through the monsoon
+Beyond the world
+To the end of time
+Where the rain won't hurt
+Fighting the storm
+Into the blue
+And when I lose myself I think of you
+Together we'll be running somewhere new
+And nothing can hold me back from you
+Through the monsoon
+Through the monsoon
+Just me and you
+Through the monsoon
+Just me and you`,
   // Kanye West — Flashing Lights
-  "5TRPicyLGbAF2LGBFbHGvO": ``,
+  "5TRPicyLGbAF2LGBFbHGvO": `[Intro: Connie Mitchell]
+Flashing lights
+Flashing lights
+Flashing lights
+Flashing lights
+
+[Verse 1: Kanye West]
+She don't believe in shootin' stars
+But she believe in shoes and cars
+Wood floors in the new apartment
+Couture from the store's departments
+You more like love to start shit
+I'm more of the trips to Florida
+Ordered the hors d'oeuvres, views of the water
+Straight from a page of your favorite author
+And the weather so breezy
+Man, why can't life always be this easy?
+She in the mirror dancin' so sleazy
+I get a call like, "Where are you, Yeezy?"
+And try to hit you with the ol-wu-wopte
+'Til I got flashed by the paparazzi
+Damn, these niggas got me
+I hate these niggas more than a Nazi
+
+[Chorus: Dwele & Connie Mitchell]
+As I recall, I know you love to show off
+But I never thought that you would take it this far
+But what do I know?
+Flashing lights
+What do I know? Know
+Flashing lights
+
+[Verse 2: Kanye West]
+I know it's been a while, sweetheart
+We hardly talk, I was doin' my thing
+I know I was foul, baby
+A-bay, lately, you've been all on my brain
+And if somebody would've told me a month ago
+Frontin' though, yo, I wouldn't wanna know
+If somebody would've told me a year ago
+It'll go get this difficult
+Feelin' like Katrina with no FEMA
+Like Martin with no Gina
+Like a flight with no visa
+First class with the seat back, I still see ya
+In my past, you on the other side of the glass
+Of my memory's museum
+I'm just sayin', "Hey, Mona Lisa
+Come home, you know you can't roam without Caesar"
+
+[Chorus: Dwele & Connie Mitchell]
+As I recall, I know you love to show off
+But I never thought that you would take it this far
+But what do I know?
+Flashing lights
+What do I know? Know
+Flashing lights
+As you recall, you know I love to show off
+But you never thought that I would take it this far
+But what do you know?
+Flashing lights
+What do you know? Know
+Flashing lights
+
+[Outro: Connie Mitchell]
+Flashing lights
+Flashing lights`,
   // XXXTENTACION — NUMB
-  "01TnVDiet1DFTsyWKUKovl": ``,
+  "01TnVDiet1DFTsyWKUKovl": `[Chorus]
+And every single year
+I'm drowning in my tears, I'm drowning in my tears again
+I can't seem to forget the pain you seem to give
+The pain you seem to give, my friend
+And every single year
+I'm drowning in my tears, I'm drowning in my tears again
+I can't seem to forget the pain you seem to give
+The pain you seem to give, my friend
+
+[Bridge]
+Woah, oh, woah, oh
+Woah, oh, woah, oh
+Woah, oh, woah, oh
+Woah, oh, woah, oh
+Woah, oh, woah, oh
+
+[Chorus]
+And every single year
+I'm drowning in my tears, I'm drowning in my tears again
+I can't seem to forget the pain you seem to give
+The pain you seem to give, my friend
+Woah, oh
+And every single year
+I'm drowning in my tears, I'm drowning in my tears again
+Woah, oh
+I can't seem to forget the pain you seem to give
+The pain you seem to give, my friend
+Woah, oh, woah, oh, woah, oh
+
+[Break]
+
+[Chorus]
+And every single year
+I'm drowning in my tears, I'm drowning in my tears again
+I can't seem to forget the pain you seem to give
+The pain you seem to give, my friend
+Woah, oh`,
 };

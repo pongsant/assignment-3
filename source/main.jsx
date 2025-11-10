@@ -165,7 +165,7 @@ function OrbitHome({ items }) {
 
       <header className="hero-head">
         <h1>Song Diary</h1>
-        <p>Drag a cover into the circle, or click to open the entry.</p>
+        <p>Drag a cover into the circle, or click to open the entry</p>
       </header>
 
       <div className="stage">
@@ -249,7 +249,7 @@ function SongDetail({ song, onBack }) {
       <section className="sheet-body">
         <h3 className="section-label">Lyrics</h3>
         <div className="lyrics-read">
-          {lyrics ? lyrics : "Add lyrics for this track id in source/data/lyrics.js"}
+          {lyrics ? lyrics : "/source/data/lyrics.js"}
         </div>
       </section>
     </div>
